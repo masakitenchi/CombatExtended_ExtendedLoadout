@@ -80,7 +80,7 @@ public static class ITab_Inventory_Patch
 	[HarmonyPatch("SyncedAddLoadout")]
 	public static IEnumerable<CodeInstruction> SyncedAddLoadout_Transpiler(IEnumerable<CodeInstruction> instructions)
 	{
-        File.WriteAllLines("E:/before.txt", instructions.Select(x => x.ToString()));
+        //File.WriteAllLines("E:/before.txt", instructions.Select(x => x.ToString()));
         List<CodeInstruction> list = instructions.ToList();
 		MethodInfo getLoadout = AccessTools.Method(typeof(Utility_Loadouts), "GetLoadout");
 		MethodInfo setLoadout = AccessTools.Method(typeof(Utility_Loadouts), "SetLoadout");
@@ -107,7 +107,7 @@ public static class ITab_Inventory_Patch
         int num2 = list.FindLastIndex((CodeInstruction c) => c.opcode == OpCodes.Call && c.operand as MethodInfo == getLoadout) - 1;
 		if (num2 != -1)
 		{
-			Log.Error($"List[num2]:{list[num2].opcode.ToString()}");
+			//Log.Error($"List[num2]:{list[num2].opcode.ToString()}");
 			// num2 should point to IL_0026
 			List<CodeInstruction> list2 = list.GetRange(num2, 2);
 			if (list2[0].opcode == OpCodes.Ldarg_0
@@ -118,7 +118,7 @@ public static class ITab_Inventory_Patch
 			{
 				list.RemoveRange(num2,2);
 				list.Insert(num2, new CodeInstruction(OpCodes.Ldloc_0));				
-				File.WriteAllLines("E:/after.txt", list.Select(x => x.ToString()));
+				//File.WriteAllLines("E:/after.txt", list.Select(x => x.ToString()));
 				return list;
 			}
 		}

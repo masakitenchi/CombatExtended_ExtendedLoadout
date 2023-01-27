@@ -89,7 +89,7 @@ public class PawnColumnWorker_Loadout_Multi : PawnColumnWorker_Loadout
 		{
 			return;
 		}
-		Log.Message("Pawn.outfits passed");
+		//Log.Message("Pawn.outfits passed");
 		int index = GetIndexFromDefName(def.defName);
 		int num = Mathf.FloorToInt(rect.width - 4f - PawnColumnWorker_Loadout.IconSize);
 		int num2 = Mathf.FloorToInt(PawnColumnWorker_Loadout.IconSize);
@@ -106,7 +106,7 @@ public class PawnColumnWorker_Loadout_Multi : PawnColumnWorker_Loadout
 			if (Widgets.ButtonImage(rect3, PersonalLoadoutImage))
 			{
 				Loadout_Multi loadout = new Loadout_Multi(pawn);
-				Log.Message($"Pawn:{pawn},Loadout:{loadout.uniqueID}");
+				//Log.Message($"Pawn:{pawn},Loadout:{loadout.uniqueID}");
 				Find.WindowStack.Add(new Dialog_ManageLoadouts_Extended(pawn, loadout.PersonalLoadout));
 			}
 			TooltipHandler.TipRegion(rect3, new TipSignal(PawnColumnWorker_Loadout.textGetter("CE_Extended.PersonalLoadoutTip"), pawn.GetHashCode() * 6178));

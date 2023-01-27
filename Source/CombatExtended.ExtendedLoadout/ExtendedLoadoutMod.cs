@@ -11,7 +11,7 @@ namespace CombatExtended.ExtendedLoadout;
 
 public class ExtendedLoadoutMod : ModBase
 {
-	public static ExtendedLoadoutMod Instance = null;
+	public static ExtendedLoadoutMod Instance = null!;
 
 	public const int MaxColumnCount = 10;
 
@@ -41,9 +41,8 @@ public class ExtendedLoadoutMod : ModBase
 		ModSettingsPack modSettings = HugsLibController.Instance.Settings.GetModSettings("CombatExtended.ExtendedLoadout");
 		SettingHandle<bool> handle = modSettings.GetHandle("UseHpAndQualityInLoadouts", "Settings.UseHpAndQualityInLoadouts.Label".Translate(), "Settings.UseHpAndQualityInLoadouts.Desc".Translate(), defaultValue: true);
 		SettingHandle<bool> UseMultiLoadouts = modSettings.GetHandle("UseMultiLoadouts", "Settings.UseMultiLoadouts.Label".Translate(), "Settings.UseMultiLoadouts.Desc".Translate(), defaultValue: true);
-		int result;
-		SettingHandle<int> MultiLoadoutsCount = modSettings.GetHandle("MultiLoadoutsCount", "Settings.MultiLoadoutsCount.Label".Translate(), "Settings.MultiLoadoutsCount.Desc".Translate(), 3, (string value) => int.TryParse(value, out result) && result >= 2 && result <= 10);
-		MultiLoadoutsCount.VisibilityPredicate = () => UseMultiLoadouts;
+        SettingHandle<int> MultiLoadoutsCount = modSettings.GetHandle("MultiLoadoutsCount", "Settings.MultiLoadoutsCount.Label".Translate(), "Settings.MultiLoadoutsCount.Desc".Translate(), 3, (string value) => int.TryParse(value, out int result) && result >= 2 && result <= 10);
+        MultiLoadoutsCount.VisibilityPredicate = () => UseMultiLoadouts;
 		for (int i = 0; i < 10; i++)
 		{
 			int colId = i;

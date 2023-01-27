@@ -47,7 +47,7 @@ public class Dialog_ManageLoadouts_Extended : Dialog_ManageLoadouts
 		if (_pawn != null)
 		{
 			Vector2 initialSize = base.InitialSize;
-			CharacterCardUtility.DrawCharacterCard(canvas.RightPartPixels(_cardSize.x), _pawn, (Action)null, default(Rect));
+			CharacterCardUtility.DrawCharacterCard(canvas.RightPartPixels(_cardSize.x), _pawn);
 			canvas = canvas.LeftPartPixels(initialSize.x);
 			if (base.CurrentLoadout != _pawnLoadout)
 			{

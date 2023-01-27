@@ -53,12 +53,12 @@ public class Dialog_ManageLoadouts_DoWindowContents_Patch
 
 	public static void DrawHpQuality(Dialog_ManageLoadouts dialog, Rect bulkBarRect)
 	{
-		Rect rect = new Rect(bulkBarRect.xMin, bulkBarRect.yMax + 6f, bulkBarRect.width, 24f);
+		Rect rect = new Rect(bulkBarRect.xMin, bulkBarRect.yMax + 36f, bulkBarRect.width, 24f);
 		Rect rect2 = new Rect(rect.xMin, rect.yMax + 6f, rect.width, 24f);
 		Rect rect3 = new Rect(rect2.xMin, rect2.yMax + 6f, rect2.width, 24f);
 		Loadout_Extended loadout_Extended = dialog.CurrentLoadout.Extended();
 		GUI.color = new Color(0.6f, 0.6f, 0.6f);
-		loadout_Extended.RefillThreshold = Widgets.HorizontalSlider(rect, loadout_Extended.RefillThreshold, 0f, 1f, middleAlignment: false, "CE_Extended.RefillThreshold".Translate(Mathf.RoundToInt(loadout_Extended.RefillThreshold * 100f)));
+		loadout_Extended.RefillThreshold = Widgets.HorizontalSlider_NewTemp(rect, loadout_Extended.RefillThreshold, 0f, 1f, middleAlignment: false, "CE_Extended.RefillThreshold".Translate(Mathf.RoundToInt(loadout_Extended.RefillThreshold * 100f)));
 		GUI.color = Color.white;
 		Widgets.FloatRange(rect2, 976833333, ref loadout_Extended.HpRange, 0f, 1f, "HitPoints", ToStringStyle.PercentZero);
 		Widgets.QualityRange(rect3, 976833334, ref loadout_Extended.QualityRange);
