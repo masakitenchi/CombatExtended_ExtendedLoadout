@@ -39,7 +39,7 @@ public class ExtendedLoadoutMod : ModBase
 	public override void DefsLoaded()
 	{
 		ModSettingsPack modSettings = HugsLibController.Instance.Settings.GetModSettings("CombatExtended.ExtendedLoadout");
-		SettingHandle<bool> handle = modSettings.GetHandle("UseHpAndQualityInLoadouts", "Settings.UseHpAndQualityInLoadouts.Label".Translate(), "Settings.UseHpAndQualityInLoadouts.Desc".Translate(), defaultValue: true);
+		SettingHandle<bool> handle = modSettings.GetHandle("UseHpAndQualityInLoadouts", "Settings.UseHpAndQualityInLoadouts.Label".Translate(), "Settings.UseHpAndQualityInLoadouts.Desc".Translate(), defaultValue: false);
 		SettingHandle<bool> UseMultiLoadouts = modSettings.GetHandle("UseMultiLoadouts", "Settings.UseMultiLoadouts.Label".Translate(), "Settings.UseMultiLoadouts.Desc".Translate(), defaultValue: true);
         SettingHandle<int> MultiLoadoutsCount = modSettings.GetHandle("MultiLoadoutsCount", "Settings.MultiLoadoutsCount.Label".Translate(), "Settings.MultiLoadoutsCount.Desc".Translate(), 3, (string value) => int.TryParse(value, out int result) && result >= 2 && result <= 10);
         MultiLoadoutsCount.VisibilityPredicate = () => UseMultiLoadouts;
